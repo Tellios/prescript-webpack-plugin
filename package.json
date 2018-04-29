@@ -1,0 +1,29 @@
+{
+  "name": "prescript-webpack-plugin",
+  "version": "0.0.0",
+  "description": "Webpack plugin for running scripts before build",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/webpack --config ./test/webpack.config.js",
+    "test:watch": "./node_modules/.bin/webpack --config ./test/webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tellios/prescript-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "prescript"
+  ],
+  "author": "Sonny Johannesson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tellios/prescript-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/Tellios/prescript-webpack-plugin#readme",
+  "devDependencies": {
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  }
+}
