@@ -54,3 +54,6 @@ typings/
 # Test files
 test/test-dist
 test/generated*
+
+# Dist files
+dist

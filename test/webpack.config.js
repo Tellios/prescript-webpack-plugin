@@ -1,5 +1,5 @@
 const path = require("path");
-const PrescriptWebpackPlugin = require("../src/plugin");
+const PrescriptWebpackPlugin = require("../dist/plugin");
 
 module.exports = {
   mode: "development",
