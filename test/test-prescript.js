@@ -4,11 +4,11 @@ const os = require("os");
 const process = require("process");
 
 const fileContents = [
-  "use strict",
+  '"use strict"',
   "",
-  "module.exports = {",
+  "module.exports = () => {",
   '  console.log("Prescript created this!");',
-  "}",
+  "};",
   ""
 ];
 

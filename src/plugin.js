@@ -1,13 +1,16 @@
 const runNodeScript = require("./runNodeScript");
+const path = require("path");
 
 function PrescriptWebpackPlugin() {}
 
 PrescriptWebpackPlugin.prototype.apply = function(compiler) {
   compiler.hooks.beforeCompile.tapAsync(
     "beforeCompile",
-    (compiler, callback) => {
-      //   runNodeScript(compiler.)
-      console.log(compiler);
+    (hookCompiler, callback) => {
+      runNodeScript(
+        compiler.context,
+        path.resolve(compiler.context, "test", "test-prescript.js")
+      );
       callback();
     }
   );
