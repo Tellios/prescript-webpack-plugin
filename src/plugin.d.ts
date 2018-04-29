@@ -1,4 +1,4 @@
-declare namespace Psp {
+export namespace Psp {
   interface IConfig {
     scripts: Readonly<Script>[];
   }
@@ -7,6 +7,7 @@ declare namespace Psp {
 
   interface IScript {
     type: string;
+    continueOnError?: boolean;
   }
 
   /**

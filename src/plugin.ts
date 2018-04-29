@@ -1,19 +1,31 @@
 import { runNodeScript } from './runNodeScript';
 import * as path from 'path';
+import { Compiler } from 'webpack';
+import { Psp } from './plugin.d';
 
-function PrescriptWebpackPlugin() {}
+class PrescriptWebpackPlugin {
+    constructor(private config: Psp.IConfig) {}
 
-PrescriptWebpackPlugin.prototype.apply = function(compiler) {
-    compiler.hooks.beforeCompile.tapAsync(
-        'beforeCompile',
-        (hookCompiler, callback) => {
-            runNodeScript(
-                compiler.context,
-                path.resolve(compiler.context, 'test', 'test-prescript.js')
-            );
-            callback();
-        }
-    );
-};
+    public apply(compiler: Compiler) {
+        compiler.hooks.beforeCompile.tapAsync(
+            'beforeCompile',
+            async (_hookCompiler: any, callback: () => void) => {
+                await this.executeScripts(compiler, callback);
+            }
+        );
+    }
+
+    private async executeScripts(compiler: Compiler, callback: () => void) {
+        // Context is missing from the types
+        const compilerContext = (compiler as any).context;
+
+        await runNodeScript(
+            compilerContext,
+            path.resolve(compilerContext, 'test', 'test-prescript.js')
+        );
+
+        callback();
+    }
+}
 
 module.exports = PrescriptWebpackPlugin;
