@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
         "module": "commonjs",
         "outDir": "dist",
         "target": "es5",
         "lib": ["es2017"],
-        "strict": true
+        "strict": true,
+        "sourceMap": true,
     },
     "include": ["src"],
     "typeAcquisition": {

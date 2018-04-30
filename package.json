@@ -4,8 +4,11 @@
   "description": "Webpack plugin for running scripts before build",
   "main": "index.js",
   "scripts": {
+    "pretty": "prettier --config .prettierrc.json --write \"src/**/*.ts\"",
     "test": "./node_modules/.bin/webpack --config ./test/webpack.config.js",
-    "test:watch": "./node_modules/.bin/webpack --config ./test/webpack.config.js --watch"
+    "test:watch": "./node_modules/.bin/webpack --config ./test/webpack.config.js --watch",
+    "build": "rimraf dist && tsc",
+    "build:watch": "rimraf dist && tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
   "devDependencies": {
     "@types/node": "^10.0.0",
     "@types/webpack": "^4.1.4",
+    "rimraf": "^2.6.2",
     "typescript": "^2.8.3",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15"
