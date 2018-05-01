@@ -35,13 +35,13 @@ module.exports = {
                         __dirname,
                         'test-ts-node-prescript.ts'
                     )
+                },
+                {
+                    type: 'shell',
+                    command: 'echo',
+                    args: ['Hello', 'from', 'shell', 'script'],
+                    workingDirectory: '/home/sonny'
                 }
-                // {
-                //     type: 'shell',
-                //     command: 'ls',
-                //     args: ['-la'],
-                //     workingDirectory: '/home/sonny'
-                // }
             ]
         })
     ]
