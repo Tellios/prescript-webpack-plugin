@@ -10,7 +10,8 @@ module.exports = {
     },
     watchOptions: {
         aggregateTimeout: 300,
-        poll: 1000
+        poll: 1000,
+        ignored: /generatedCode$/
     },
     plugins: [
         new PrescriptWebpackPlugin({
@@ -19,6 +20,12 @@ module.exports = {
                     type: 'node',
                     scriptFile: path.join(__dirname, 'test-prescript.js')
                 }
+                // {
+                //     type: 'shell',
+                //     command: 'ls',
+                //     args: ['-la'],
+                //     workingDirectory: '/home/sonny'
+                // }
             ]
         })
     ]

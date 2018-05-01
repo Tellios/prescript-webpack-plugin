@@ -24,9 +24,22 @@ class PrescriptWebpackPlugin {
         compiler.hooks.beforeCompile.tapAsync(
             'beforeCompile',
             async (_hookCompiler: any, callback: () => void) => {
+                console.log('beforeCompile');
                 await this.executeScripts(compiler, callback);
             }
         );
+
+        compiler.hooks.run.tap('run', () => {
+            console.log('run');
+        });
+
+        compiler.hooks.watchRun.tap('watchRun', () => {
+            console.log('watchRun');
+        });
+
+        compiler.hooks.done.tap('done', () => {
+            console.log('done');
+        });
     }
 
     private async executeScripts(compiler: Compiler, callback: () => void) {
@@ -62,4 +75,4 @@ class PrescriptWebpackPlugin {
     }
 }
 
-module.exports = PrescriptWebpackPlugin;
+export = PrescriptWebpackPlugin;

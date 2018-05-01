@@ -53,7 +53,7 @@ typings/
 
 # Test files
 test/test-dist
-test/generated*
+test/*generated*
 
 # Dist files
 dist
