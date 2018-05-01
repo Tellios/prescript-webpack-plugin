@@ -12,7 +12,9 @@ const fileLines = [
     ''
 ];
 
-const filePath = path.resolve(__dirname, 'generatedCode', 'code.generated.js');
+console.log('Args to node scriptFile:', process.argv.slice(2));
+
+const filePath = path.resolve(__dirname, 'code.generated.js');
 const fileContents = fileLines.join(os.EOL);
 const fileTime = Date.now() / 1000 - 20;
 

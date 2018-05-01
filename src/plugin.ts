@@ -36,7 +36,8 @@ class PrescriptWebpackPlugin {
     }
 
     private async executeScripts(compiler: Compiler, callback: () => void) {
-        // Context is missing from the typings
+        // Context is missing from the typings which provides the working
+        // directory path fallback
         const compilerContext = (compiler as any).context;
 
         for (const script of this.scripts) {

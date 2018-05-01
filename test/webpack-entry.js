@@ -1,6 +1,6 @@
 // This is the entry file for the webpack config
 
-const scriptGeneratedCode = require('./generatedCode/code.generated');
+const scriptGeneratedCode = require('./code.generated');
 require('./some-dependency');
 require('./some-other-dependency');
 
