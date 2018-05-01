@@ -2,13 +2,15 @@
   "name": "prescript-webpack-plugin",
   "version": "0.0.0",
   "description": "Webpack plugin for running scripts before build",
-  "main": "index.js",
+  "main": "dist/PrescriptWebpackPlugin.js",
   "scripts": {
     "pretty": "prettier --config .prettierrc.json --write \"src/**/*.ts\"",
-    "test": "./node_modules/.bin/webpack --config ./test/webpack.config.js",
-    "test:watch": "./node_modules/.bin/webpack --config ./test/webpack.config.js --watch",
-    "build": "rimraf dist && tsc",
-    "build:watch": "rimraf dist && tsc --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "start": "./node_modules/.bin/webpack --config ./test/webpack.config.js",
+    "start:watch": "./node_modules/.bin/webpack --config ./test/webpack.config.js --watch",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "build:watch": "rimraf dist && tsc -p tsconfig.build.json --watch"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,27 @@
     "url": "https://github.com/Tellios/prescript-webpack-plugin/issues"
   },
   "homepage": "https://github.com/Tellios/prescript-webpack-plugin#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "@types/node": "^10.0.0",
     "@types/webpack": "^4.1.4",
+    "jest": "^22.4.3",
     "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.4",
     "typescript": "^2.8.3",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15"
