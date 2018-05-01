@@ -1,6 +1,6 @@
 import { Script } from './Script';
 import { Psp } from '../plugin.d';
-import { ConfigError } from '../errors';
+import { ConfigError, ScriptError, ProcessError } from '../errors';
 import { stringValidator } from '../validators';
 import { spawnProcess } from '../spawnProcess';
 
@@ -18,7 +18,21 @@ export class ShellScript extends Script {
             workingDirectory = compilerContext
         } = this.config;
 
-        await spawnProcess(command, throwOnError, args, workingDirectory);
+        try {
+            await spawnProcess(command, args, workingDirectory);
+        } catch (error) {
+            if (throwOnError) {
+                if (error instanceof ProcessError) {
+                    throw new ScriptError(
+                        `Command '${command}' failed with exit code: ${
+                            error.exitCode
+                        }`
+                    );
+                } else {
+                    throw error;
+                }
+            }
+        }
     }
 
     private validateConfig(config: Psp.IShellScript) {

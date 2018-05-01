@@ -1,9 +1,9 @@
 import { spawn } from 'child_process';
 import * as process from 'process';
+import { ProcessError } from './errors';
 
 export function spawnProcess(
     command: string,
-    throwOnError: boolean,
     args?: string[],
     workingDirectory?: string
 ) {
@@ -14,8 +14,8 @@ export function spawnProcess(
         });
 
         child.on('close', code => {
-            if (code !== 0 && throwOnError) {
-                reject(new Error(`Script failed with exit code: ${code}`));
+            if (code !== 0) {
+                reject(new ProcessError(code));
                 return;
             }
 

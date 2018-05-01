@@ -1,6 +1,6 @@
 import { Script } from './Script';
 import { Psp } from '../plugin.d';
-import { ConfigError } from '../errors';
+import { ConfigError, ProcessError, ScriptError } from '../errors';
 import { stringValidator } from '../validators';
 import { spawnProcess } from '../spawnProcess';
 import { spawn } from 'child_process';
@@ -20,12 +20,25 @@ export class TypeScriptNodeScript extends Script {
             args = []
         } = this.config;
 
-        await spawnProcess(
-            interpreter,
-            throwOnError,
-            [scriptFile, ...args],
-            workingDirectory
-        );
+        try {
+            await spawnProcess(
+                interpreter,
+                [scriptFile, ...args],
+                workingDirectory
+            );
+        } catch (error) {
+            if (throwOnError) {
+                if (error instanceof ProcessError) {
+                    throw new ScriptError(
+                        `Script '${scriptFile}' failed with exit code: ${
+                            error.exitCode
+                        }`
+                    );
+                } else {
+                    throw error;
+                }
+            }
+        }
     }
 
     private validateConfig(config: Psp.ITypeScriptNodeScript) {
