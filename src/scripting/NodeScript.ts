@@ -56,7 +56,7 @@ export class NodeScript extends Script {
         }
 
         if (
-            config.workingDirectory &&
+            config.workingDirectory != null &&
             !stringValidator(config.workingDirectory)
         ) {
             throw new ConfigError(
@@ -64,7 +64,7 @@ export class NodeScript extends Script {
             );
         }
 
-        if (config.workingDirectory && config.script) {
+        if (config.workingDirectory != null && config.script) {
             throw new ConfigError(
                 'workingDirectory cannot be combined with script'
             );
@@ -80,16 +80,16 @@ export class NodeScript extends Script {
             );
         }
 
-        if (config.script && typeof config.script !== 'function') {
+        if (config.script != null && typeof config.script !== 'function') {
             throw new ConfigError(`script must be a function`);
         }
 
-        if (config.scriptFile && !stringValidator(config.scriptFile)) {
+        if (config.scriptFile != null && !stringValidator(config.scriptFile)) {
             throw new ConfigError('scriptFile must be a non-empty string');
         }
 
         if (
-            config.scriptFile &&
+            config.scriptFile != null &&
             config.args &&
             config.args.some(a => !stringValidator(a))
         ) {
@@ -98,7 +98,7 @@ export class NodeScript extends Script {
             );
         }
 
-        if (config.interpreter && stringValidator(config.interpreter)) {
+        if (config.interpreter != null && !stringValidator(config.interpreter)) {
             throw new ConfigError('interpreter must be a non-empty string');
         }
     }

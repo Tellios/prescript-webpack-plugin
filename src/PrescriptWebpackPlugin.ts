@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { Compiler } from 'webpack';
 import { Psp } from './plugin.d';
-import { Script, scriptFactory, scriptExecutor } from './scripts';
+import { Script, scriptFactory, scriptExecutor } from './scripting';
 import { ConfigError } from './errors';
 
 class PrescriptWebpackPlugin {

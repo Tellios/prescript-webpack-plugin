@@ -1,5 +1,3 @@
-import { ADDRGETNETWORKPARAMS } from 'dns';
-
 export namespace Psp {
     interface IConfig {
         scripts: Readonly<Script>[];

@@ -15,8 +15,8 @@ describe('stringValidator', () => {
     });
 
     test('should return false for undefined or null', () => {
-        expect(stringValidator(null)).toBeFalsy();
-        expect(stringValidator(undefined)).toBeFalsy();
+        expect(stringValidator(null as any)).toBeFalsy();
+        expect(stringValidator(undefined as any)).toBeFalsy();
     });
 
     test('should return false for something that is not a string', () => {
