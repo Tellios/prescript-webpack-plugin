@@ -7,8 +7,8 @@ import { ShellScript } from '../ShellScript';
 
 describe('scriptFactory', () => {
     test('should throw ConfigError if config is null or undefined', () => {
-        expect(() => scriptFactory(null)).toThrowError(ConfigError);
-        expect(() => scriptFactory(undefined)).toThrowError(ConfigError);
+        expect(() => scriptFactory(null as any)).toThrowError(ConfigError);
+        expect(() => scriptFactory(undefined as any)).toThrowError(ConfigError);
     });
 
     test('should throw ConfigError if scripts is null or undefined', () => {
@@ -17,11 +17,11 @@ describe('scriptFactory', () => {
         );
 
         expect(() =>
-            scriptFactory({ scripts: undefined } as Psp.IConfig)
+            scriptFactory({ scripts: undefined } as any)
         ).toThrowError(ConfigError);
 
         expect(() =>
-            scriptFactory({ scripts: null } as Psp.IConfig)
+            scriptFactory({ scripts: null } as any)
         ).toThrowError(ConfigError);
     });
 

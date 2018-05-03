@@ -49,7 +49,7 @@ export class TypeScriptNodeScript extends Script {
         }
 
         if (
-            config.workingDirectory &&
+            config.workingDirectory != null &&
             !stringValidator(config.workingDirectory)
         ) {
             throw new ConfigError(
@@ -57,15 +57,15 @@ export class TypeScriptNodeScript extends Script {
             );
         }
 
-        if (config.scriptFile && !stringValidator(config.scriptFile)) {
+        if (config.scriptFile == null || !stringValidator(config.scriptFile)) {
             throw new ConfigError('scriptFile must be a non-empty string');
         }
 
-        if (config.args && config.args.some(a => !stringValidator(a))) {
+        if (config.args != null && config.args.some(a => !stringValidator(a))) {
             throw new ConfigError('All args must be non-empty strings');
         }
 
-        if (config.interpreter && !stringValidator(config.interpreter)) {
+        if (config.interpreter != null && !stringValidator(config.interpreter)) {
             throw new ConfigError('interpreter must be a non-empty string');
         }
     }

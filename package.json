@@ -28,6 +28,11 @@
   },
   "homepage": "https://github.com/Tellios/prescript-webpack-plugin#readme",
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    },
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },

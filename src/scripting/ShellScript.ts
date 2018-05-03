@@ -43,7 +43,7 @@ export class ShellScript extends Script {
         }
 
         if (
-            config.workingDirectory &&
+            config.workingDirectory != null &&
             !stringValidator(config.workingDirectory)
         ) {
             throw new ConfigError(
@@ -52,19 +52,16 @@ export class ShellScript extends Script {
         }
 
         if (
-            !config.command ||
-            typeof config.command !== 'string' ||
-            config.command === ''
+            config.command == null ||
+            !stringValidator(config.command)
         ) {
             throw new ConfigError(
                 `Shell script command must be a string with a value`
             );
         }
 
-        if (config.args && config.args.length > 0) {
-            if (config.args.some(a => typeof a !== 'string')) {
-                throw new ConfigError('All shell script args must be strings');
-            }
+        if (config.args && config.args.some(a => !stringValidator(a))) {
+            throw new ConfigError('All shell script args must be strings');
         }
     }
 }
