@@ -98,7 +98,10 @@ export class NodeScript extends Script {
             );
         }
 
-        if (config.interpreter != null && !stringValidator(config.interpreter)) {
+        if (
+            config.interpreter != null &&
+            !stringValidator(config.interpreter)
+        ) {
             throw new ConfigError('interpreter must be a non-empty string');
         }
     }

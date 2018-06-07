@@ -1,4 +1,4 @@
-import { stringValidator } from "../stringValidator";
+import { stringValidator } from '../stringValidator';
 
 describe('stringValidator', () => {
     test('should return true for a non-empty string', () => {

@@ -51,10 +51,7 @@ export class ShellScript extends Script {
             );
         }
 
-        if (
-            config.command == null ||
-            !stringValidator(config.command)
-        ) {
+        if (config.command == null || !stringValidator(config.command)) {
             throw new ConfigError(
                 `Shell script command must be a string with a value`
             );

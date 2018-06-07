@@ -16,13 +16,13 @@ describe('scriptFactory', () => {
             ConfigError
         );
 
-        expect(() =>
-            scriptFactory({ scripts: undefined } as any)
-        ).toThrowError(ConfigError);
+        expect(() => scriptFactory({ scripts: undefined } as any)).toThrowError(
+            ConfigError
+        );
 
-        expect(() =>
-            scriptFactory({ scripts: null } as any)
-        ).toThrowError(ConfigError);
+        expect(() => scriptFactory({ scripts: null } as any)).toThrowError(
+            ConfigError
+        );
     });
 
     test('should throw ConfigError if scripts is not an array', () => {
@@ -88,7 +88,7 @@ describe('scriptFactory', () => {
                 { type: 'shell', command: 'echo' },
                 { type: 'node', scriptFile: 'script.js' },
                 { type: 'ts-node', scriptFile: 'script.ts' },
-                { type: 'shell', command: 'ls' },
+                { type: 'shell', command: 'ls' }
             ]
         });
 

@@ -65,7 +65,10 @@ export class TypeScriptNodeScript extends Script {
             throw new ConfigError('All args must be non-empty strings');
         }
 
-        if (config.interpreter != null && !stringValidator(config.interpreter)) {
+        if (
+            config.interpreter != null &&
+            !stringValidator(config.interpreter)
+        ) {
             throw new ConfigError('interpreter must be a non-empty string');
         }
     }
