@@ -1,0 +1,32 @@
+pool:
+  name: Hosted Ubuntu 1604
+
+steps:
+- task: NodeTool@0
+  displayName: 'Use Node 10.x'
+  inputs:
+    versionSpec: 10.x
+    checkLatest: true
+
+- task: Npm@1
+  displayName: 'npm ci'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: ci
+  timeoutInMinutes: 5
+
+- task: Npm@1
+  displayName: 'npm test'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: test
+  timeoutInMinutes: 5
+  
+- task: Npm@1
+  displayName: 'npm build'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run-script build'
