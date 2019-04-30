@@ -1,6 +1,12 @@
 pool:
   name: Hosted Ubuntu 1604
 
+trigger:
+  - '*'
+
+pr:
+  - '*'
+
 steps:
 - task: NodeTool@0
   displayName: 'Use Node 10.x'
