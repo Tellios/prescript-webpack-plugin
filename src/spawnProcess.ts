@@ -8,7 +8,7 @@ export function spawnProcess(
     workingDirectory?: string
 ) {
     return new Promise((resolve, reject) => {
-        const child = spawn(command, args, {
+        const child = spawn(command, args || [], {
             cwd: workingDirectory,
             stdio: 'inherit'
         });
