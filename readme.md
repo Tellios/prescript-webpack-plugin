@@ -1,5 +1,7 @@
 # prescript-webpack-plugin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Tellios/prescript-webpack-plugin.svg)](https://greenkeeper.io/)
+
 Prescript is intended for those rare cases where you want to run scripts before transpiling/bundling your code with webpack.
 
 A typical example usage is to auto-generate e.g typescript typings based on often changing json files like language files. On every run of webpack the scripts will be run before any transpiling or bundling takes place.
