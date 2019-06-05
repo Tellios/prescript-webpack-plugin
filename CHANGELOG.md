@@ -7,15 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.3] - 2019-06-05
+
+### Changed
+- Updated dev dependencies
+- Tested with webpack 4.33.0
+
 ## [0.1.2] - 2019-06-05
 
 ### Changed
-- Updated dependencies
+- Updated dev dependencies
 
 ## [0.1.1] - 2018-06-07
 
 ### Changed
-- Updated dependencies
+- Updated dev dependencies
 
 ## [0.1.0] - 2018-05-03
 

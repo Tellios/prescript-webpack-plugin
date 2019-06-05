@@ -31,6 +31,10 @@ module.exports = {
                 {
                     type: 'ts-node',
                     args: ['arg1', '--arg2'],
+                    interpreter: path.resolve(
+                        __dirname,
+                        '../node_modules/.bin/ts-node'
+                    ),
                     scriptFile: path.join(
                         __dirname,
                         'test-ts-node-prescript.ts'
