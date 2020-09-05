@@ -1,7 +1,5 @@
 # prescript-webpack-plugin
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Tellios/prescript-webpack-plugin.svg)](https://greenkeeper.io/)
-
 Prescript is intended for those rare cases where you want to run scripts before transpiling/bundling your code with webpack.
 
 A typical example usage is to auto-generate e.g typescript typings based on often changing json files like language files. On every run of webpack the scripts will be run before any transpiling or bundling takes place.
@@ -139,36 +137,15 @@ Run any shell command, this could for example enable you to run python scripts o
 
 # Common issues
 
-Since prescripts are executed just before webpack's build triggers it can cause issues when modifying files that webpack works with during building in combination with webpack's watchers. To accomodate this, files being modified have to be added to `watchOptions.ignored` in `webpack.config` like this:
+Since prescripts are executed just before webpack's build triggers it can cause issues when modifying files that webpack works with during building in combination with webpack's watchers. To accomodate this, you can tweak the amount milliseconds that need to elapse before executing prescripts again.
 
 ```js
-watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000,
-    // Ignored here makes sure that watchers won't trigger on the generated files.
-    ignored: [
-        /\.generated\.js$/
-    ]
-},
-```
-
-In addition to this, generated files require a bit of a hack which is that writes to the file need to modify the `utimes` of the file like this:
-
-```js
-fs.writeFile(filePath, fileContents, err => {
-    if (err) {
-        process.exit(1);
-    }
-
-    // Makes the file 20 seconds younger
-    const fileTime = Date.now() / 1000 - 20;
-
-    // This makes sure that webpack won't trigger unnecessary builds in
-    // watch mode
-    fs.utimes(filePath, fileTime, fileTime, err => {
-        if (err) {
-            process.exit(1);
-        }
-    });
-});
+plugins: [
+    new PrescriptWebpackPlugin({
+        millisecondsBetweenRuns: 500, // 500 ms is the default
+        scripts: [
+            /* ... */
+        ]
+    })
+];
 ```

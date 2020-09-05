@@ -8,13 +8,9 @@ module.exports = {
         path: path.resolve(__dirname, 'test-dist'),
         filename: 'bundle.js'
     },
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: 1000,
-        ignored: [/\.generated\.js$/]
-    },
     plugins: [
         new PrescriptWebpackPlugin({
+            millisecondsBetweenRuns: 3000,
             scripts: [
                 {
                     type: 'node',

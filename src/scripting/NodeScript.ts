@@ -39,9 +39,7 @@ export class NodeScript extends Script {
             if (throwOnError) {
                 if (error instanceof ProcessError) {
                     throw new ScriptError(
-                        `Script '${scriptFile}' failed with exit code: ${
-                            error.exitCode
-                        }`
+                        `Script '${scriptFile}' failed with exit code: ${error.exitCode}`
                     );
                 } else {
                     throw error;
@@ -91,7 +89,7 @@ export class NodeScript extends Script {
         if (
             config.scriptFile != null &&
             config.args &&
-            config.args.some(a => !stringValidator(a))
+            config.args.some((a) => !stringValidator(a))
         ) {
             throw new ConfigError(
                 'When using scriptFile, all args must be non-empty strings'

@@ -16,16 +16,9 @@ console.log('Args to node scriptFile:', process.argv.slice(2));
 
 const filePath = path.resolve(__dirname, 'code.generated.js');
 const fileContents = fileLines.join(os.EOL);
-const fileTime = Date.now() / 1000 - 20;
 
 fs.writeFile(filePath, fileContents, err => {
     if (err) {
         process.exit(1);
     }
-
-    fs.utimes(filePath, fileTime, fileTime, err => {
-        if (err) {
-            process.exit(1);
-        }
-    });
 });

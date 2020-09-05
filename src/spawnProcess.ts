@@ -1,5 +1,4 @@
 import { spawn } from 'child_process';
-import * as process from 'process';
 import { ProcessError } from './errors';
 
 export function spawnProcess(
@@ -13,7 +12,7 @@ export function spawnProcess(
             stdio: 'inherit'
         });
 
-        child.on('close', code => {
+        child.on('close', (code) => {
             if (code !== 0) {
                 reject(new ProcessError(code));
                 return;

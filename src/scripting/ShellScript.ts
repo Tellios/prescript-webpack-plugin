@@ -24,9 +24,7 @@ export class ShellScript extends Script {
             if (throwOnError) {
                 if (error instanceof ProcessError) {
                     throw new ScriptError(
-                        `Command '${command}' failed with exit code: ${
-                            error.exitCode
-                        }`
+                        `Command '${command}' failed with exit code: ${error.exitCode}`
                     );
                 } else {
                     throw error;
@@ -57,7 +55,7 @@ export class ShellScript extends Script {
             );
         }
 
-        if (config.args && config.args.some(a => !stringValidator(a))) {
+        if (config.args && config.args.some((a) => !stringValidator(a))) {
             throw new ConfigError('All shell script args must be strings');
         }
     }

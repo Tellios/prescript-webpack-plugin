@@ -221,7 +221,7 @@ describe('NodeScript', () => {
                 args: [1, 2, '3']
             });
 
-            const result = nodeScript.run('');
+            nodeScript.run('');
 
             expect(script).toHaveBeenCalledWith(1, 2, '3');
         });
