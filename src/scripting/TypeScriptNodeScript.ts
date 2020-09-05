@@ -29,9 +29,7 @@ export class TypeScriptNodeScript extends Script {
             if (throwOnError) {
                 if (error instanceof ProcessError) {
                     throw new ScriptError(
-                        `Script '${scriptFile}' failed with exit code: ${
-                            error.exitCode
-                        }`
+                        `Script '${scriptFile}' failed with exit code: ${error.exitCode}`
                     );
                 } else {
                     throw error;
@@ -60,7 +58,10 @@ export class TypeScriptNodeScript extends Script {
             throw new ConfigError('scriptFile must be a non-empty string');
         }
 
-        if (config.args != null && config.args.some(a => !stringValidator(a))) {
+        if (
+            config.args != null &&
+            config.args.some((a) => !stringValidator(a))
+        ) {
             throw new ConfigError('All args must be non-empty strings');
         }
 

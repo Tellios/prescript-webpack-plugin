@@ -14,7 +14,7 @@ export function scriptFactory(config: Psp.IConfig): Script[] {
         throw new ConfigError('scripts config is missing or is not an array');
     }
 
-    return config.scripts.map(scriptConfig => {
+    return config.scripts.map((scriptConfig) => {
         if (scriptConfig.type === 'node') {
             return new NodeScript(scriptConfig);
         } else if (scriptConfig.type === 'ts-node') {

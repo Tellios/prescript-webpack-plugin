@@ -1,7 +1,7 @@
 export namespace Psp {
     interface IConfig {
         scripts: Readonly<Script>[];
-        
+
         /**
          * The minimum amount of time between script runs. By default this is 500 ms.
          * The setting enables you to tweak the amount of time that must pass before

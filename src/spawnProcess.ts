@@ -12,7 +12,7 @@ export function spawnProcess(
             stdio: 'inherit'
         });
 
-        child.on('close', code => {
+        child.on('close', (code) => {
             if (code !== 0) {
                 reject(new ProcessError(code));
                 return;
