@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-09-05
+
+### Changed
+- Added `millisecondsBetweenRuns` option to improve usability with webpack watcher builds, see readme for more information.
+
 ## [0.1.3] - 2019-06-05
 
 ### Changed
