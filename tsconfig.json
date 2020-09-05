@@ -5,6 +5,8 @@
         "lib": ["es2017"],
         "strict": true,
         "sourceMap": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true
     },
     "include": ["src"],
     "typeAcquisition": {

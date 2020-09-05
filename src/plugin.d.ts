@@ -1,6 +1,16 @@
 export namespace Psp {
     interface IConfig {
         scripts: Readonly<Script>[];
+        
+        /**
+         * The minimum amount of time between script runs. By default this is 500 ms.
+         * The setting enables you to tweak the amount of time that must pass before
+         * allowing the scripts to be executed again. This is required when scripts
+         * are used to generate code that is watched by webpack. If the time is too
+         * short it can lead to unnecessary compilations or even endlessly restarting
+         * compilations
+         */
+        millisecondsBetweenRuns?: number;
     }
 
     type Script = IShellScript | INodeScript | ITypeScriptNodeScript;

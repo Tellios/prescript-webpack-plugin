@@ -1,5 +1,4 @@
 import { spawn } from 'child_process';
-import * as process from 'process';
 import { ProcessError } from './errors';
 
 export function spawnProcess(

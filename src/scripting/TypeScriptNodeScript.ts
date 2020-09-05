@@ -3,7 +3,6 @@ import { Psp } from '../plugin.d';
 import { ConfigError, ProcessError, ScriptError } from '../errors';
 import { stringValidator } from '../validators';
 import { spawnProcess } from '../spawnProcess';
-import { spawn } from 'child_process';
 
 export class TypeScriptNodeScript extends Script {
     constructor(private config: Psp.ITypeScriptNodeScript) {

@@ -1,14 +1,18 @@
-import * as path from 'path';
 import { Compiler } from 'webpack';
 import { Psp } from './plugin.d';
 import { Script, scriptFactory, scriptExecutor } from './scripting';
-import { ConfigError } from './errors';
+
+const defaultMillisecondsBetweenRuns = 500;
 
 class PrescriptWebpackPlugin {
     private scripts: Script[];
+    private lastExecution = 0;
+    private millisecondsBetweenRuns: number;
 
-    constructor(private config: Psp.IConfig) {
+    constructor(config: Psp.IConfig) {
         this.scripts = scriptFactory(config);
+        this.millisecondsBetweenRuns =
+            config.millisecondsBetweenRuns ?? defaultMillisecondsBetweenRuns;
     }
 
     public apply(compiler: Compiler) {
@@ -16,11 +20,17 @@ class PrescriptWebpackPlugin {
             'beforeCompile',
             async (_hookCompiler: any, callback: () => void) => {
                 try {
-                    // Context is missing from the typings which provides the working
-                    // directory path fallback
-                    const compilerContext = (compiler as any).context;
+                    const compilerContext = compiler.context;
 
-                    await scriptExecutor(this.scripts, compilerContext);
+                    const millisecondsSinceLastRun =
+                        Date.now() - this.lastExecution;
+
+                    if (
+                        millisecondsSinceLastRun > this.millisecondsBetweenRuns
+                    ) {
+                        await scriptExecutor(this.scripts, compilerContext);
+                        this.lastExecution = Date.now();
+                    }
 
                     callback();
                 } catch (error) {
